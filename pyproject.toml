@@ -1,59 +1,80 @@
-[project]
-name = "deep-learning-for-computer-vision-and-nlp"
-version = "0.1.0"
-description = ""
-authors = [
-    {name = "Mykola Zubchyk"}
-]
-readme = "README.md"
-requires-python = ">=3.10,<3.13"
-dependencies = [
-    "numpy (>=1.18.5,<2.0)",
-    "pandas (>=2.2.3,<3.0.0)",
-    "matplotlib (>=3.10.1,<4.0.0)",
-    "scikit-learn (>=1.6.1,<2.0.0)",
-    "jinja2 (>=3.1.6,<4.0.0)",
-    "seaborn (>=0.13.2,<0.14.0)",
-    "tqdm (>=4.67.1,<5.0.0)",
-    "opencv-python (>=4.11.0.86,<5.0.0.0)",
-    "plotly-express (>=0.4.1,<0.5.0)",
-    "nltk (>=3.9.1,<4.0.0)",
-    "optuna (>=4.2.1,<5.0.0)",
-    "ipykernel (>=6.29.5,<7.0.0)",
-    "kagglehub (>=0.3.12,<0.4.0)",
-    "ultralytics (>=8.3.120,<9.0.0)",
-    "gensim (>=4.3.3,<5.0.0)",
-    "fasttext (>=0.9.3,<0.10.0)",
-    "torch ==2.3.0",
-    "torchvision ==0.18.0",
-    "torchtext ==0.18.0",
-    "evaluate (>=0.4.3,<0.5.0)",
-    "datasets (>=3.6.0,<4.0.0)",
-    "spacy (>=3.8,<4.0)",
-    "transformers (>=4.51.3,<5.0.0)",
-    "sentencepiece (>=0.2.0,<0.3.0)",
-    "umap (>=0.1.1,<0.2.0)",
-    "lightgbm (>=4.6.0,<5.0.0)",
-    "sentence-transformers (>=4.1.0,<5.0.0)",
-    "keras (>=3.10.0,<4.0.0)",
-    "tensorflow (>=2.19.0,<3.0.0)",
-    "catboost (>=1.2.8,<2.0.0)",
-    "xgboost (>=3.0.2,<4.0.0)",
-    "kaggle (>=1.7.4.5,<2.0.0.0)",
-    "opencv-python-headless (>=4.11.0.86,<5.0.0.0)",
-    "imblearn (>=0.0,<0.1)",
-    "category-encoders (>=2.8.1,<3.0.0)",
-    "orjson (>=3.10.18,<4.0.0)",
-]
-
 [tool.poetry]
-package-mode = false
+name            = "deep-learning-for-computer-vision-and-nlp"
+version         = "0.1.0"
+description     = ""
+authors         = ["Mykola Zubchyk"]
+package-mode    = false
+readme          = "README.md"
+
+[tool.poetry.dependencies]
+python          = ">=3.10,<3.13"
+
+# базові бібліотеки
+numpy           = ">=1.18.5,<2.0"
+pandas          = ">=2.2.3,<3.0.0"
+matplotlib      = ">=3.10.1,<4.0.0"
+seaborn         = ">=0.13.2,<0.14.0"
+scikit-learn    = ">=1.6.1,<2.0.0"
+tqdm            = ">=4.67.1,<5.0.0"
+jinja2          = ">=3.1.6,<4.0.0"
+
+# візуалізація
+plotly-express  = ">=0.4.1,<0.5.0"
+
+# CV / NLP утиліти
+opencv-python   = ">=4.11.0.86,<5.0.0"        # headless більше не потрібен
+nltk            = ">=3.9.1,<4.0.0"
+gensim          = ">=4.3.3,<5.0.0"
+fasttext        = ">=0.9.3,<0.10.0"
+sentencepiece   = ">=0.2.0,<0.3.0"
+sentence-transformers = ">=4.1.0,<5.0.0"
+umap-learn      = ">=0.5.5,<1.0.0"            # правильна назва пакета
+evaluate        = ">=0.4.3,<0.5.0"
+datasets        = ">=3.6.0,<4.0.0"
+spacy           = ">=3.8,<4.0"
+transformers    = ">=4.51.3,<5.0.0"
+
+# AutoML / ML
+optuna          = ">=4.2.1,<5.0.0"
+lightgbm        = ">=4.6.0,<5.0.0"
+catboost        = ">=1.2.8,<2.0.0"
+xgboost         = ">=3.0.2,<4.0.0"
+imblearn        = ">=0.0,<0.1"
+category-encoders = ">=2.8.1,<3.0.0"
+orjson          = ">=3.10.18,<4.0.0"
+
+# Deep-learning — CUDA 12.1 (cuDNN 8) білди
+torch       = { version = "2.3.0+cu121", source = "pytorch-cu121" }
+torchvision = { version = "0.18.0+cu121", source = "pytorch-cu121" }
+torchaudio  = { version = "2.3.0+cu121", source = "pytorch-cu121" }
+torchtext   = "0.18.0"              # чисто Python, тому лишаємо з PyPI
+
+# TF/Keras
+tensorflow   = ">=2.19.0,<3.0.0"
+keras        = ">=3.10.0,<4.0.0"
+
+# інші утиліти
+ipykernel    = ">=6.29.5,<7.0.0"
+kagglehub    = ">=0.3.12,<0.4.0"
+kaggle       = ">=1.7.4.5,<2.0.0.0"
+ultralytics  = ">=8.3.120,<9.0.0"
+accelerate = "^1.7.0"
+tokenizers = "^0.21.1"
+shap = "^0.46.0"
+wordcloud = "^1.9.4"
+tf-keras = "^2.19.0"
 
 [tool.poetry.group.dev.dependencies]
-notebook = "^7.4.1"
-ipywidgets = "^8.1.7"
-jupyterlab = "^4.4.2"
+notebook     = "^7.4.1"
+ipywidgets   = "^8.1.7"
+jupyterlab   = "^4.4.2"
+
+# ---------- PyPI джерело залишається за замовчуванням ----------
+[[tool.poetry.source]]
+name     = "pytorch-cu121"
+url      = "https://download.pytorch.org/whl/cu121"
+priority = "explicit"   # береться лише для пакетів, де вказано source = "pytorch-cu121"
 
 [build-system]
-requires = ["poetry-core>=2.0.0,<3.0.0"]
+requires      = ["poetry-core>=2.0.0,<3.0.0"]
 build-backend = "poetry.core.masonry.api"
